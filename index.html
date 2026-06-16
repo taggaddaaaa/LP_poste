@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Posté ! tes réseaux publiés pour toi à partir de tes vraies photos | ULTRAFACILE AI</title>
+  <meta name="description" content="Posté ! génère chaque semaine tes publications LinkedIn, Facebook et Instagram à partir de tes vraies photos. Tu valides en 1 clic par email, on publie. Pas d'image IA. Par l'agence ULTRAFACILE AI." />
+  <meta name="keywords" content="automatisation réseaux sociaux, publication LinkedIn Facebook Instagram, contenu à partir de vraies photos, validation 1 clic, agence IA TPE PME, ULTRAFACILE AI, Posté !" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#F59E0B">
+
+  <style>
+    /* ─────────────────────────────────────────────────────────────────
+       DESIGN TOKENS - from design.md
+    ───────────────────────────────────────────────────────────────── */
+    :root {
+      /* Primary */
+      --color-primary:        #F59E0B;
+      --color-primary-hover:  #D97706;
+      --color-primary-muted:  #FEF3C7;
+
+      /* Secondary */
+      --color-secondary:      #78716C;
+      --color-secondary-hover:#57534E;
+
+      /* Accent */
+      --color-accent:         #F59E0B;
+      --color-accent-hover:   #FBBF24;
+      --color-accent-muted:   #FEF3C7;
+
+      /* Backgrounds */
+      --color-background:     #FAFAFA;
+      --color-surface:        #FFFFFF;
+      --color-surface-elevated: #FFFFFF;
+
+      /* Text */
+      --color-text-primary:   #1F2937;
+      --color-text-secondary: #4B5563;
+      --color-text-muted:     #9CA3AF;
+      --color-text-ghost:     #D1D5DB;
+
+      /* Borders */
+      --color-border-primary: #E5E7EB;
+      --color-border-subtle:  #F3F4F6;
+
+      /* States */
+      --color-success: #10B981;
+      --color-error:   #EF4444;
+      --color-warning: #F59E0B;
+
+      /* HSL */
+      --color-primary-hsl:     38, 92%, 50%;
+      --color-accent-hsl:      38, 92%, 50%;
+      --color-background-hsl:  0, 0%, 98%;
+
+      /* Fonts */
+      --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body:    'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono:    'SF Mono', Monaco, 'Inconsolata', 'Roboto Mono', Consolas, monospace;
+
+      /* Type scale - Desktop */
+      --text-display:         4rem;
+      --text-display-weight:  700;
+      --text-display-height:  1.1;
+      --text-display-spacing: -0.02em;
+
+      --text-h1: 3rem;        --text-h1-weight: 600;   --text-h1-height: 1.2;
+      --text-h2: 2.25rem;     --text-h2-weight: 600;   --text-h2-height: 1.3;
+      --text-h3: 1.875rem;    --text-h3-weight: 500;   --text-h3-height: 1.4;
+      --text-h4: 1.5rem;      --text-h4-weight: 500;   --text-h4-height: 1.4;
+
+      --text-body-lg: 1.125rem;   --text-body-lg-weight: 400;   --text-body-lg-height: 1.6;
+      --text-body:    1rem;       --text-body-weight: 400;      --text-body-height: 1.6;
+      --text-body-sm: 0.875rem;   --text-body-sm-weight: 400;   --text-body-sm-height: 1.5;
+      --text-caption: 0.75rem;    --text-caption-weight: 500;   --text-caption-height: 1.4;
+
+      /* Type scale - Mobile */
+      --text-display-mobile: 2.5rem;
+      --text-h1-mobile:      2rem;
+      --text-h2-mobile:      1.75rem;
+      --text-h3-mobile:      1.5rem;
+      --text-h4-mobile:      1.25rem;
+
+      /* Spacing */
+      --space-1:  0.25rem;
+      --space-2:  0.5rem;
+      --space-3:  0.75rem;
+      --space-4:  1rem;
+      --space-5:  1.25rem;
+      --space-6:  1.5rem;
+      --space-8:  2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+
+      --section-padding-y:          var(--space-24);
+      --section-padding-y-lg:       var(--space-32);
+      --section-padding-x:          var(--space-6);
+      --section-padding-y-mobile:   var(--space-16);
+      --section-padding-y-lg-mobile:var(--space-20);
+
+      --max-width-prose:   42.5rem;
+      --max-width-content: 67.5rem;
+      --max-width-wide:    80rem;
+
+      --grid-cols:       12;
+      --grid-gap:        1.5rem;
+      --grid-gap-mobile: 1rem;
+
+      /* Shadows */
+      --shadow-xs: 0 1px 2px rgba(0,0,0,.05);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.12);
+      --shadow-md: 0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06), 0 12px 20px rgba(0,0,0,.04);
+      --shadow-lg: 0 8px 30px rgba(0,0,0,.12), 0 4px 10px rgba(0,0,0,.08), 0 20px 40px rgba(0,0,0,.06);
+      --shadow-glow:        0 0 30px rgba(245,158,11,.15), 0 0 60px rgba(245,158,11,.08), 0 4px 20px rgba(0,0,0,.1);
+      --shadow-glow-intense:0 0 40px rgba(245,158,11,.25), 0 0 80px rgba(245,158,11,.12), 0 8px 32px rgba(0,0,0,.15);
+
+      /* Radius */
+      --radius-none: 0;
+      --radius-xs:   0.25rem;
+      --radius-sm:   0.5rem;
+      --radius-md:   0.75rem;
+      --radius-lg:   1rem;
+      --radius-xl:   1.5rem;
+      --radius-full: 9999px;
+
+      /* Gradients */
+      --gradient-hero:
+        linear-gradient(135deg,
+          #FAFAFA 0%, #FEF3C7 15%, #FAFAFA 35%,
+          #FEF3C7 55%, #FAFAFA 75%, #FEF3C7 100%);
+      --gradient-accent:
+        linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+      --gradient-surface:
+        linear-gradient(to bottom, rgba(255,255,255,.08) 0%, rgba(255,255,255,0) 100%);
+      --gradient-glow:
+        radial-gradient(circle at 50% 50%, rgba(245,158,11,.1) 0%, rgba(245,158,11,.05) 50%, transparent 100%);
+      --gradient-text:
+        linear-gradient(135deg, #F59E0B 0%, #FBBF24 50%, #F97316 100%);
+      --gradient-border:
+        conic-gradient(from 0deg, #F59E0B, #FBBF24, #F97316, #F59E0B);
+    }
+
+    /* ─────────────────────────────────────────────────────────────────
+       RESET & BASE
+    ───────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      line-height: var(--text-body-height);
+      font-size: var(--text-body);
+    }
+
+    h1, h2, h3, h4 { font-family: var(--font-heading); }
+    h1 { font-size: var(--text-h1); font-weight: var(--text-h1-weight); line-height: var(--text-h1-height); letter-spacing: -0.01em; }
+    h2 { font-size: var(--text-h2); font-weight: var(--text-h2-weight); line-height: var(--text-h2-height); letter-spacing: -0.01em; }
+    h3 { font-size: 1.15rem; font-weight: 600; line-height: var(--text-h3-height); }
+
+    .container {
+      max-width: var(--max-width-content);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    .section {
+      padding: var(--section-padding-y) var(--section-padding-x);
+    }
+
+    .section-label {
+      display: inline-block;
+      background: var(--color-primary-muted);
+      color: var(--color-primary);
+      font-size: var(--text-caption);
+      font-weight: var(--text-caption-weight);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(245,158,11,.2);
+      margin-bottom: var(--space-4);
+    }
+
+    .text-center { text-align: center; }
+    .text-muted  { color: var(--color-text-muted); }
+
+    /* ── GRADIENT TEXT ──────────────────────────────────────────── */
+    .gradient-text {
+      background: var(--gradient-text);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      animation: gradient-shift 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes gradient-shift {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .text-glow { text-shadow: 0 0 20px rgba(245,158,11,.3); }
+    .text-balance { text-wrap: balance; }
+
+    /* ── GLOW ORBS ──────────────────────────────────────────────── */
+    .glow-orb-1 {
+      position: absolute;
+      width: 400px; height: 400px;
+      background: var(--gradient-glow);
+      border-radius: 50%;
+      filter: blur(80px);
+      top: -200px; left: -200px;
+      z-index: 0; opacity: .6;
+      pointer-events: none;
+    }
+    .glow-orb-2 {
+      position: absolute;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(251,191,36,.15) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(60px);
+      bottom: -150px; right: -150px;
+      z-index: 0; opacity: .4;
+      pointer-events: none;
+    }
+
+    /* ── GRAIN TEXTURE ──────────────────────────────────────────── */
+    .grain-texture::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── SECTION DIVIDER ────────────────────────────────────────── */
+    .section-divider {
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--color-border-primary) 20%,
+        var(--color-primary) 50%,
+        var(--color-border-primary) 80%,
+        transparent 100%);
+    }
+
+    /* ── SCROLL REVEAL ──────────────────────────────────────────── */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      filter: blur(8px);
+      transition: opacity .8s cubic-bezier(.16,1,.3,1),
+                  transform .8s cubic-bezier(.16,1,.3,1),
+                  filter .8s cubic-bezier(.16,1,.3,1);
+    }
+    .scroll-reveal.visible {
+      opacity: 1; transform: translateY(0); filter: blur(0);
+    }
+    .scroll-reveal-stagger > *:nth-child(1) { transition-delay: .05s; }
+    .scroll-reveal-stagger > *:nth-child(2) { transition-delay: .15s; }
+    .scroll-reveal-stagger > *:nth-child(3) { transition-delay: .25s; }
+    .scroll-reveal-stagger > *:nth-child(4) { transition-delay: .35s; }
+    .scroll-reveal-stagger > *:nth-child(5) { transition-delay: .45s; }
+    .scroll-reveal-stagger > *:nth-child(6) { transition-delay: .55s; }
+
+    /* ── PAGE LOAD ──────────────────────────────────────────────── */
+    @keyframes page-fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .page-container { animation: page-fade-in .8s ease-out; }
+
+    .hero-stagger > * { opacity: 0; animation: page-fade-in .8s ease-out forwards; }
+    .hero-stagger > *:nth-child(1) { animation-delay: .1s; }
+    .hero-stagger > *:nth-child(2) { animation-delay: .2s; }
+    .hero-stagger > *:nth-child(3) { animation-delay: .3s; }
+    .hero-stagger > *:nth-child(4) { animation-delay: .4s; }
+
+    /* ── BUTTONS ────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: .875rem 2rem;
+      border-radius: var(--radius-lg);
+      font-family: var(--font-body);
+      font-size: var(--text-body);
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: all .2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Shimmer effect on hover */
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.2) 50%, transparent 100%);
+      transition: left .5s ease;
+    }
+    .btn:hover::before { left: 100%; }
+
+    .btn-primary {
+      background: var(--gradient-accent);
+      color: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-primary:hover  { transform: scale(1.02); box-shadow: var(--shadow-glow); }
+    .btn-primary:active { transform: scale(.98); }
+    .btn-primary:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-glow), 0 0 0 3px rgba(245,158,11,.3);
+    }
+
+    .btn-secondary {
+      background: var(--color-surface);
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border-primary);
+      box-shadow: var(--shadow-xs);
+    }
+    .btn-secondary:hover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-muted);
+      transform: scale(1.02);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+    }
+    .btn-outline:hover { background: var(--color-primary); color: #fff; transform: scale(1.02); }
+
+    /* ── GLASS ──────────────────────────────────────────────────── */
+    .glass {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255,255,255,.8);
+      border: 1px solid rgba(255,255,255,.2);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ── CARDS ──────────────────────────────────────────────────── */
+    .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-sm);
+      transition: all .3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--gradient-surface);
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--color-primary); }
+    .card:hover::before { opacity: 1; }
+
+    /* ── BADGES ─────────────────────────────────────────────────── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: .375rem .875rem;
+      background: var(--color-primary-muted);
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+      font-size: var(--text-body-sm);
+      font-weight: 500;
+      border: 1px solid rgba(245,158,11,.2);
+    }
+    .badge-success {
+      background: rgba(16,185,129,.1);
+      color: var(--color-success);
+      border-color: rgba(16,185,129,.2);
+    }
+
+    /* ───────────────────────────────────────────────────────────────
+       NAV
+    ─────────────────────────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border-subtle);
+      transition: all .3s ease;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,.95);
+      border-bottom-color: var(--color-border-primary);
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: var(--max-width-content);
+      margin: 0 auto;
+      padding: var(--space-4) var(--space-6);
+    }
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      line-height: 1.05;
+    }
+    .logo span { color: var(--color-primary); }
+    .logo small {
+      display: block;
+      font-size: .6rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 1px;
+    }
+    .nav-menu { display: flex; gap: var(--space-8); list-style: none; }
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--color-text-secondary);
+      font-size: .95rem;
+      font-weight: 500;
+      transition: color .15s;
+    }
+    .nav-menu a:hover { color: var(--color-primary); }
+    .nav-burger { display: none; background: none; border: none; cursor: pointer; padding: var(--space-2); }
+    .nav-burger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--color-text-primary);
+      margin: 5px 0;
+      transition: .3s;
+      border-radius: 2px;
+    }
+
+    /* ───────────────────────────────────────────────────────────────
+       1. HERO
+    ─────────────────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      overflow: hidden;
+      padding: var(--section-padding-y-lg) var(--section-padding-x);
+      background: var(--gradient-hero);
+    }
+
+    .hero-grid {
+      max-width: var(--max-width-content);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-primary);
+      border-radius: var(--radius-full);
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-body-sm);
+      font-weight: 600;
+      box-shadow: var(--shadow-xs);
+      margin-bottom: var(--space-6);
+    }
+    .hero-badge .live-dot {
+      width: 8px; height: 8px;
+      background: var(--color-success);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16,185,129,.4); }
+      50%       { opacity: .8; box-shadow: 0 0 0 6px rgba(16,185,129,0); }
+    }
+
+    .hero-title {
+      font-size: var(--text-display);
+      font-weight: var(--text-display-weight);
+      line-height: var(--text-display-height);
+      letter-spacing: var(--text-display-spacing);
+      margin-bottom: var(--space-5);
+    }
+
+    .hero-sub {
+      font-size: var(--text-body-lg);
+      color: var(--color-text-secondary);
+      line-height: var(--text-body-lg-height);
+      margin-bottom: var(--space-8);
+      max-width: var(--max-width-prose);
+    }
+
+    .hero-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; }
+    .btn-hero { padding: 1rem 2.25rem; font-size: 1.05rem; font-weight: 600; }
+
+    .hero-trust {
+      margin-top: var(--space-8);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-body-sm);
+      color: var(--color-text-muted);
+    }
+    .hero-trust .stars { color: var(--color-primary); letter-spacing: 1px; flex-shrink: 0; }
+
+    /* Hero mock : un vrai mail Gmail reçu par le client */
+    .hero-visual {
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-glow);
+      overflow: hidden;
+      border: 1px solid var(--color-border-primary);
+      background: var(--color-surface);
+      position: relative;
+      z-index: 1;
+    }
+    /* Barre Gmail */
+    .gm-bar {
+      display:flex; align-items:center; gap: var(--space-3);
+      padding: 11px 16px;
+      background: #fff;
+      border-bottom: 1px solid var(--color-border-primary);
+    }
+    .gm-logo { display:flex; align-items:center; gap:6px; font-weight:600; font-size:.92rem; color:#5f6368; flex-shrink:0; }
+    .gm-logo .m { color:#EA4335; font-size:1.2rem; font-weight:800; }
+    .gm-search {
+      flex:1; background:#EFF1F3; border-radius: var(--radius-full);
+      padding: 7px 14px; font-size:.72rem; color:#80868b;
+    }
+    .gm-account { width:26px; height:26px; border-radius:50%; background: var(--gradient-accent); flex-shrink:0; }
+    /* Sujet */
+    .gm-subject { padding: 16px 20px 0; }
+    .gm-subject h3 { font-size: 1.05rem; font-weight:700; color: var(--color-text-primary); }
+    .gm-labels { display:flex; gap:6px; margin-top:8px; }
+    .gm-label { font-size:.62rem; font-weight:600; color:#5f6368; background:#EFF1F3; padding:2px 9px; border-radius: var(--radius-full); }
+    /* Expéditeur */
+    .gm-from { display:flex; align-items:center; gap: var(--space-3); padding: 14px 20px; }
+    .gm-avatar {
+      width:40px; height:40px; border-radius:50%;
+      background: var(--gradient-accent); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800; font-size:.8rem; flex-shrink:0;
+    }
+    .gm-from-name { font-size: var(--text-body-sm); font-weight:700; }
+    .gm-from-mail { color: var(--color-text-muted); font-weight:400; }
+    .gm-from-meta { font-size:.72rem; color: var(--color-text-muted); }
+    .gm-star { margin-left:auto; color: var(--color-text-ghost); font-size:1.15rem; }
+    /* Corps */
+    .gm-body { padding: 0 20px 18px; }
+    .gm-photo {
+      position: relative;
+      border-radius: var(--radius-md);
+      aspect-ratio: 16 / 10;
+      background:
+        linear-gradient(135deg, rgba(245,158,11,.18), rgba(249,115,22,.28)),
+        repeating-linear-gradient(45deg, #FEF3C7 0 14px, #FDE68A 14px 28px);
+      border: 1px solid var(--color-border-subtle);
+      overflow:hidden;
+      display:flex; align-items:flex-end;
+      margin-bottom: var(--space-4);
+    }
+    .gm-photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .gm-photo span {
+      position:relative; z-index:1;
+      font-size:.64rem; font-weight:700; color:#92400E;
+      background: rgba(255,255,255,.88);
+      padding: 3px 8px; border-radius: var(--radius-sm); margin: 8px;
+    }
+    .gm-nets { display:flex; gap:6px; margin-bottom: var(--space-3); }
+    .gm-net {
+      font-size:.66rem; font-weight:700; padding:3px 9px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-muted); color:#92400E;
+      border:1px solid rgba(146,64,14,.15);
+    }
+    .gm-caption { font-size: var(--text-body-sm); color: var(--color-text-secondary); line-height:1.55; margin-bottom: var(--space-3); }
+    .gm-tags { font-size:.72rem; color: var(--color-primary); font-weight:600; margin-bottom: var(--space-5); }
+    .gm-actions { display:flex; gap: var(--space-2); }
+    .gm-btn {
+      flex:1; text-align:center; font-size: var(--text-body-sm); font-weight:700;
+      padding: 11px 6px; border-radius: var(--radius-md); border:1px solid transparent;
+    }
+    .gm-btn.publish { background: var(--color-success); color:#fff; }
+    .gm-btn.next    { background: var(--color-background); color: var(--color-text-secondary); border-color: var(--color-border-primary); }
+    .gm-btn.cancel  { background: rgba(239,68,68,.1); color: var(--color-error); border-color: rgba(239,68,68,.2); }
+    .gm-hint { text-align:center; font-size:.66rem; color: var(--color-text-muted); margin-top: var(--space-3); }
+
+    /* ───────────────────────────────────────────────────────────────
+       2. PROBLEM
+    ─────────────────────────────────────────────────────────────── */
+    #problem {
+      background: #111827;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      padding: var(--section-padding-y) var(--section-padding-x);
+    }
+    #problem .section-label { background: rgba(245,158,11,.15); }
+    #problem h2 { color: #fff; }
+    #problem .sub { color: var(--color-text-muted); font-size: var(--text-body-lg); max-width: var(--max-width-prose); margin-top: var(--space-3); }
+
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-16);
+    }
+
+    .problem-card {
+      background: #1F2937;
+      border: 1px solid #374151;
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      transition: all .3s ease;
+    }
+    .problem-card:hover {
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-4px);
+    }
+    .problem-icon { font-size: 2rem; margin-bottom: var(--space-4); }
+    .problem-card h3 { color: #fff; margin-bottom: var(--space-2); font-size: 1rem; }
+    .problem-card p { color: #9CA3AF; font-size: var(--text-body-sm); }
+    .problem-stat { font-size: 2rem; font-weight: 800; color: var(--color-primary); margin-top: var(--space-4); }
+    .problem-stat-label { font-size: var(--text-caption); color: #6B7280; }
+
+    /* ───────────────────────────────────────────────────────────────
+       3. SOLUTIONS
+    ─────────────────────────────────────────────────────────────── */
+    #solutions {
+      background: var(--color-background);
+      padding: var(--section-padding-y) var(--section-padding-x);
+    }
+
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-16);
+    }
+
+    .solution-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-sm);
+      transition: all .3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .solution-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: var(--gradient-surface); opacity: 0; transition: opacity .3s;
+    }
+    .solution-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary);
+    }
+    .solution-card:hover::before { opacity: 1; }
+    .solution-card.feature-star { border-color: var(--color-primary); box-shadow: var(--shadow-glow); }
+    .feature-tag {
+      display:inline-block; font-size:.62rem; font-weight:700; text-transform:uppercase;
+      letter-spacing:.06em; color:#92400E; background: var(--color-primary-muted);
+      padding: 2px 8px; border-radius: var(--radius-full); margin-bottom: var(--space-3);
+    }
+
+    .sol-icon {
+      width: 52px; height: 52px;
+      background: var(--color-primary-muted);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: var(--space-5);
+    }
+    .solution-card h3 { margin-bottom: var(--space-2); font-size: 1.05rem; }
+    .solution-card p { color: var(--color-text-secondary); font-size: var(--text-body-sm); }
+
+    /* ───────────────────────────────────────────────────────────────
+       4. PROCESS
+    ─────────────────────────────────────────────────────────────── */
+    #process {
+      background: var(--color-primary-muted);
+      padding: var(--section-padding-y) var(--section-padding-x);
+    }
+
+    .steps {
+      display: flex; flex-direction: column;
+      max-width: var(--max-width-prose);
+      margin: var(--space-16) auto 0;
+    }
+    .step { display: flex; gap: var(--space-6); position: relative; padding-bottom: var(--space-12); }
+    .step:last-child { padding-bottom: 0; }
+    .step-aside { display: flex; flex-direction: column; align-items: center; }
+    .step-num {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--gradient-accent);
+      color: #fff;
+      font-size: 1.1rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-glow);
+    }
+    .step-line { width: 2px; flex: 1; background: rgba(245,158,11,.25); margin-top: var(--space-2); }
+    .step:last-child .step-line { display: none; }
+    .step-body { padding-top: .7rem; }
+    .step-body h3 { margin-bottom: var(--space-1); }
+    .step-body p { color: var(--color-text-secondary); font-size: var(--text-body-sm); }
+    .step-time {
+      display: inline-block; margin-top: var(--space-3);
+      font-size: var(--text-caption); font-weight: 700;
+      color: var(--color-primary);
+      background: rgba(245,158,11,.12);
+      padding: 4px 14px; border-radius: var(--radius-full);
+    }
+
+    /* ───────────────────────────────────────────────────────────────
+       5. TESTIMONIALS
+    ─────────────────────────────────────────────────────────────── */
+    #testimonials {
+      background: var(--color-surface);
+      padding: var(--section-padding-y) var(--section-padding-x);
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-16);
+    }
+
+    .testi-card {
+      background: var(--color-background);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      transition: all .3s ease;
+      position: relative;
+    }
+    .testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--color-primary); }
+    .testi-card.real { border-color: var(--color-primary); box-shadow: var(--shadow-glow); }
+    .testi-card.placeholder { border-style: dashed; border-color: var(--color-border-primary); background: var(--color-surface); }
+    .testi-tag {
+      position:absolute; top: var(--space-5); right: var(--space-5);
+      font-size:.6rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em;
+      padding: 3px 9px; border-radius: var(--radius-full);
+    }
+    .testi-tag.client { background: rgba(16,185,129,.12); color: var(--color-success); border:1px solid rgba(16,185,129,.25); }
+    .testi-tag.todo { background: var(--color-border-subtle); color: var(--color-text-muted); border:1px solid var(--color-border-primary); }
+    .testi-stars { color: var(--color-primary); font-size: 1rem; margin-bottom: var(--space-4); letter-spacing: 2px; }
+    .testi-quote { font-size: var(--text-body-sm); color: var(--color-text-primary); line-height: 1.7; margin-bottom: var(--space-6); }
+    .testi-card.placeholder .testi-quote { color: var(--color-text-muted); font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: var(--space-4); }
+    .testi-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--color-primary-muted);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .testi-name { font-weight: 700; font-size: var(--text-body-sm); }
+    .testi-role { font-size: var(--text-caption); color: var(--color-text-muted); }
+    .testi-metric {
+      margin-top: var(--space-5);
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--color-border-subtle);
+      display: flex; gap: var(--space-5);
+    }
+    .testi-metric-item { text-align: center; }
+    .testi-metric-num { font-size: 1.3rem; font-weight: 800; color: var(--color-primary); }
+    .testi-metric-lbl { font-size: .68rem; color: var(--color-text-muted); }
+
+    /* ───────────────────────────────────────────────────────────────
+       7. PRICING
+    ─────────────────────────────────────────────────────────────── */
+    #pricing {
+      background: var(--color-background);
+      padding: var(--section-padding-y) var(--section-padding-x);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-16);
+    }
+
+    .pricing-card {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border-primary);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      position: relative;
+      transition: all .3s ease;
+      display: flex; flex-direction: column;
+    }
+    .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .pricing-card.popular { border-color: var(--color-primary); box-shadow: var(--shadow-glow); }
+    .popular-badge {
+      position: absolute; top: -14px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--gradient-accent);
+      color: #fff;
+      font-size: var(--text-caption); font-weight: 700;
+      padding: 5px 18px; border-radius: var(--radius-full);
+      white-space: nowrap;
+    }
+    .plan-name { font-size: var(--text-caption); font-weight: 700; text-transform: uppercase; letter-spacing:.08em; color: var(--color-text-muted); margin-bottom: var(--space-3); }
+    .plan-price { font-size: 2.4rem; font-weight: 800; color: var(--color-text-primary); line-height:1.1; }
+    .plan-price span { font-size: 1rem; font-weight: 400; color: var(--color-text-muted); }
+    .plan-sub { font-size: var(--text-body-sm); font-weight:600; color: var(--color-primary); margin-top: var(--space-1); }
+    .plan-desc { font-size: var(--text-body-sm); color: var(--color-text-secondary); margin: var(--space-3) 0 var(--space-6); }
+    .plan-features { list-style: none; margin-bottom: var(--space-8); display: flex; flex-direction: column; gap: var(--space-3); flex:1; }
+    .plan-features li { display: flex; align-items: flex-start; gap: var(--space-3); font-size: var(--text-body-sm); }
+    .plan-features li::before { content: "✓"; color: var(--color-primary); font-weight: 700; flex-shrink: 0; }
+    .plan-features li.off::before { content: "–"; color: var(--color-text-ghost); }
+    .plan-features li.off { color: var(--color-text-ghost); }
+    .plan-cta { width: 100%; justify-content: center; }
+    .pricing-note { text-align: center; margin-top: var(--space-8); font-size: var(--text-body-sm); color: var(--color-text-muted); max-width: 640px; margin-left: auto; margin-right: auto; }
+
+    /* ───────────────────────────────────────────────────────────────
+       8. INTEGRATIONS MARQUEE
+    ─────────────────────────────────────────────────────────────── */
+    #logos {
+      background: var(--color-primary-muted);
+      padding: var(--space-16) 0;
+      overflow: hidden;
+    }
+    .logos-label { text-align: center; font-size: var(--text-body-sm); color: var(--color-text-muted); font-weight: 500; margin-bottom: var(--space-8); text-transform: uppercase; letter-spacing:.06em; }
+    .marquee-wrap { overflow: hidden; }
+    .marquee-track {
+      display: flex; gap: var(--space-12);
+      animation: marquee 28s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .logo-item {
+      background: var(--color-surface);
+      border: 1px solid rgba(245,158,11,.15);
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-8);
+      font-size: var(--text-body-sm); font-weight: 700;
+      color: #6B7280; letter-spacing:.04em; white-space: nowrap;
+      transition: color .3s, box-shadow .3s;
+    }
+    .logo-item:hover { color: var(--color-text-primary); box-shadow: var(--shadow-sm); }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ───────────────────────────────────────────────────────────────
+       6. CTA FINAL
+    ─────────────────────────────────────────────────────────────── */
+    #cta-final {
+      background: #111827;
+      color: #fff;
+      text-align: center;
+      padding: var(--section-padding-y-lg) var(--section-padding-x);
+      position: relative;
+      overflow: hidden;
+    }
+    #cta-final h2 { color: #fff; margin-bottom: var(--space-4); }
+    #cta-final p { color: var(--color-text-muted); font-size: var(--text-body-lg); max-width: 520px; margin: 0 auto var(--space-10); text-align: center; text-wrap: balance; }
+    .cta-guarantees {
+      display: flex; justify-content: center; gap: var(--space-8);
+      margin-top: var(--space-8); flex-wrap: wrap;
+    }
+    .guarantee { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-body-sm); color: var(--color-text-muted); }
+    .guarantee .check { color: var(--color-primary); font-weight: 700; }
+
+    /* ───────────────────────────────────────────────────────────────
+       FOOTER
+    ─────────────────────────────────────────────────────────────── */
+    footer {
+      background: var(--color-background);
+      color: var(--color-text-secondary);
+      padding: var(--space-16) 0 var(--space-8);
+      font-size: var(--text-body-sm);
+      border-top: 1px solid var(--color-border-primary);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: var(--space-12);
+      margin-bottom: var(--space-12);
+    }
+    .footer-brand .logo { color: var(--color-text-primary); font-size: 1.25rem; }
+    .footer-brand p { margin-top: var(--space-3); line-height: 1.7; max-width: 300px; color: var(--color-text-muted); }
+    .footer-col h4 { color: var(--color-text-primary); font-size: var(--text-caption); margin-bottom: var(--space-4); text-transform: uppercase; letter-spacing:.06em; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+    .footer-col ul a { color: var(--color-text-secondary); text-decoration: none; transition: color .15s; }
+    .footer-col ul a:hover { color: var(--color-primary); }
+    .footer-bottom {
+      border-top: 1px solid var(--color-border-primary);
+      padding-top: var(--space-6);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);
+      color: var(--color-text-muted);
+    }
+
+    /* ───────────────────────────────────────────────────────────────
+       RESPONSIVE
+    ─────────────────────────────────────────────────────────────── */
+    @media (max-width: 639px) {
+      h1 { font-size: var(--text-display-mobile); }
+      h2 { font-size: var(--text-h2-mobile); }
+      h3 { font-size: var(--text-h3-mobile); }
+
+      .section, #hero, #cta-final {
+        padding-top: var(--section-padding-y-mobile);
+        padding-bottom: var(--section-padding-y-mobile);
+      }
+
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .nav-menu { display: none; }
+      .nav-burger { display: block; }
+      .footer-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+      .step { gap: var(--space-4); }
+      .cta-guarantees { gap: var(--space-4); }
+    }
+
+    @media (min-width: 640px) and (max-width: 1023px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-title { font-size: var(--text-display); }
+    }
+  </style>
+</head>
+
+<body class="page-container">
+
+  <!-- ── NAV ──────────────────────────────────────────────────────── -->
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <a href="#" class="logo">Easy<span>SN</span><small>par ULTRAFACILE AI</small></a>
+      <ul class="nav-menu">
+        <li><a href="#solutions">Ce que ça fait</a></li>
+        <li><a href="#process">Comment ça marche</a></li>
+        <li><a href="#testimonials">Clients</a></li>
+        <li><a href="#pricing">Tarif</a></li>
+      </ul>
+      <a href="#cta-final" data-cta class="btn btn-primary" style="padding:.75rem 1.5rem; font-size:.9rem;">Réserver un appel</a>
+      <button class="nav-burger" aria-label="Menu" id="burger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── 1. HERO ───────────────────────────────────────────────────── -->
+  <section id="hero" class="grain-texture">
+    <div class="glow-orb-1"></div>
+    <div class="glow-orb-2"></div>
+
+    <div class="hero-grid">
+      <div class="hero-stagger">
+        <div class="hero-badge">
+          <span class="live-dot"></span>
+          Tes vraies photos. Jamais d'image IA.
+        </div>
+
+        <h1 class="hero-title text-balance">
+          Tes réseaux publiés pour toi,<br />
+          <span class="gradient-text">à partir de tes vraies photos</span>
+        </h1>
+
+        <p class="hero-sub">
+          Chaque matin, tu reçois un mail avec une publication prête : ta photo, ta légende, à ta voix. Tu n'as plus qu'à valider en 1 clic, et on publie pour toi sur LinkedIn, Facebook et Instagram.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#cta-final" data-cta class="btn btn-primary btn-hero">Réserver un appel →</a>
+          <a href="#process" class="btn btn-secondary btn-hero">Voir comment ça marche</a>
+        </div>
+
+        <div class="hero-trust">
+          <span class="stars">★★★★★</span>
+          <span>Premier client : <strong>LOC'KARTING</strong>, circuit de karting près de Montpellier (4,4/5 sur 1 374 avis Google)</span>
+        </div>
+      </div>
+
+      <!-- Mock : le mail de validation quotidien tel que le client le reçoit dans Gmail -->
+      <div class="hero-visual">
+        <div class="gm-bar">
+          <div class="gm-logo"><span class="m">M</span> Gmail</div>
+          <div class="gm-search">Rechercher dans les messages</div>
+          <div class="gm-account"></div>
+        </div>
+
+        <div class="gm-subject">
+          <h3>Ta publication du jour, prête à valider</h3>
+          <div class="gm-labels">
+            <span class="gm-label">Boîte de réception</span>
+            <span class="gm-label">Posté !</span>
+          </div>
+        </div>
+
+        <div class="gm-from">
+          <div class="gm-avatar">SN</div>
+          <div style="flex:1">
+            <div class="gm-from-name">Posté ! <span class="gm-from-mail">&lt;hello@ultrafacile.ai&gt;</span></div>
+            <div class="gm-from-meta">à moi · 9:00</div>
+          </div>
+          <span class="gm-star">☆</span>
+        </div>
+
+        <div class="gm-body">
+          <div class="gm-photo">
+            <!-- Dépose une vraie photo LOC'KARTING ici : assets/hero-lockarting.jpg -->
+            <img src="assets/hero-lockarting.jpg" alt="Photo LOC'KARTING" onerror="this.style.display='none'" />
+            <span>📷 Ta photo, depuis ton Drive</span>
+          </div>
+
+          <div class="gm-nets">
+            <span class="gm-net">in LinkedIn</span>
+            <span class="gm-net">f Facebook</span>
+            <span class="gm-net">◎ Instagram</span>
+          </div>
+
+          <p class="gm-caption">
+            « Nouvelle session ce week-end sur le circuit. 40 ans qu'on fait vrombir Montpellier, et l'envie est intacte. Réserve ton créneau. »
+          </p>
+          <div class="gm-tags">#karting #montpellier #loisirs #adrenaline</div>
+
+          <div class="gm-actions">
+            <span class="gm-btn publish">Publier</span>
+            <span class="gm-btn next">Suivant</span>
+            <span class="gm-btn cancel">Annuler</span>
+          </div>
+          <p class="gm-hint">Un seul clic. On s'occupe du reste.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── 2. PROBLEM ───────────────────────────────────────────────── -->
+  <section id="problem">
+    <div class="glow-orb-1" style="opacity:.15"></div>
+    <div class="container">
+      <span class="section-label">Le vrai problème</span>
+      <h2 class="scroll-reveal">Tu sais que tu devrais publier.<br />Mais ça passe toujours après le reste.</h2>
+      <p class="sub scroll-reveal">Les réseaux sociaux, c'est chronophage, ingrat, et toujours relégué en bas de la to-do. Alors tu postes par à-coups, ou plus du tout.</p>
+
+      <div class="problems-grid scroll-reveal-stagger">
+        <div class="problem-card scroll-reveal">
+          <div class="problem-icon">⏰</div>
+          <h3>Tu n'as pas le temps</h3>
+          <p>Penser un post, choisir une photo, écrire, adapter à chaque réseau, publier. À faire correctement, ça prend des heures que tu n'as pas.</p>
+          <div class="problem-stat">2 à 3h<span style="font-size:1rem">/sem.</span></div>
+          <div class="problem-stat-label">pour t'en occuper sérieusement</div>
+        </div>
+        <div class="problem-card scroll-reveal">
+          <div class="problem-icon">🤖</div>
+          <h3>L'IA classique sonne faux</h3>
+          <p>Les outils crachent des visuels et des textes hors-sol, déconnectés de ton vrai quotidien. Tes clients le sentent tout de suite.</p>
+          <div class="problem-stat">Hors-sol</div>
+          <div class="problem-stat-label">le contenu 100% généré par IA</div>
+        </div>
+        <div class="problem-card scroll-reveal">
+          <div class="problem-icon">💸</div>
+          <h3>Déléguer coûte cher</h3>
+          <p>Un freelance ou une agence, c'est cher, et ils ne connaissent ni ton métier ni tes clients. Tu paies sans garantie.</p>
+          <div class="problem-stat">800€+<span style="font-size:1rem">/mois</span></div>
+          <div class="problem-stat-label">pour un freelance social media</div>
+        </div>
+        <div class="problem-card scroll-reveal">
+          <div class="problem-icon">📉</div>
+          <h3>L'irrégularité te rend invisible</h3>
+          <p>Sans régularité, l'algorithme t'oublie et ton expertise reste invisible. Pendant ce temps, tes concurrents, eux, publient.</p>
+          <div class="problem-stat">7j/7</div>
+          <div class="problem-stat-label">le rythme de ceux qu'on voit</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" style="background:linear-gradient(90deg, transparent 0%, #374151 20%, #F59E0B 50%, #374151 80%, transparent 100%);"></div>
+
+  <!-- ── 3. SOLUTIONS ──────────────────────────────────────────────── -->
+  <section id="solutions" class="section">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Ce que fait Posté !</span>
+        <h2 class="scroll-reveal">Tes publications, à partir de ta réalité,<br />validées par toi, publiées pour toi</h2>
+        <p class="scroll-reveal" style="color:var(--color-text-secondary); margin-top:var(--space-3); font-size:var(--text-body-lg); max-width:600px; margin-left:auto; margin-right:auto;">Pas de magie, pas de contenu hors-sol. On part de tes vraies photos et de ta voix. Tu gardes la main du début à la fin.</p>
+      </div>
+
+      <div class="solutions-grid scroll-reveal-stagger">
+        <div class="solution-card feature-star scroll-reveal">
+          <span class="feature-tag">Le différenciateur</span>
+          <div class="sol-icon">📷</div>
+          <h3>Tes vraies photos, jamais d'IA</h3>
+          <p>On part de ta banque d'images (un simple dossier Google Drive). Tes produits, ton atelier, ton équipe. Ta marque reste la tienne, rien n'est inventé.</p>
+        </div>
+        <div class="solution-card scroll-reveal">
+          <div class="sol-icon">✍️</div>
+          <h3>Des légendes à ta voix</h3>
+          <p>Notre programme lit ta base de connaissance (ton activité, ton ton, tes offres) et rédige des légendes ancrées sur ce qu'on voit vraiment sur la photo, adaptées à chaque réseau.</p>
+        </div>
+        <div class="solution-card scroll-reveal">
+          <div class="sol-icon">✅</div>
+          <h3>Tu valides en 1 clic, par email</h3>
+          <p>Chaque jour, tu reçois un mail : Publier, Suivant ou Annuler. Rien ne part sans ton accord. Pas de logiciel à apprendre, pas de tableau de bord à surveiller.</p>
+        </div>
+        <div class="solution-card scroll-reveal">
+          <div class="sol-icon">🔗</div>
+          <h3>LinkedIn, Facebook, Instagram d'un coup</h3>
+          <p>Une seule validation publie sur tes trois réseaux en même temps, avec le bon format pour chacun. Tu ne jongles plus entre les applis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── 4. PROCESS ────────────────────────────────────────────────── -->
+  <section id="process">
+    <div class="container text-center">
+      <span class="section-label">Comment on démarre</span>
+      <h2 class="scroll-reveal">On s'occupe de la mise en place. Toi, tu valides.</h2>
+      <p class="scroll-reveal" style="color:var(--color-text-secondary); margin-top:var(--space-3); font-size:var(--text-body-lg);">Pas de logiciel à installer. On branche tout, tu n'as qu'à dire oui.</p>
+    </div>
+
+    <div class="container">
+      <div class="steps">
+        <div class="step scroll-reveal">
+          <div class="step-aside">
+            <div class="step-num">1</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-body">
+            <h3>On t'audite et on construit ta base de connaissance</h3>
+            <p>Un échange pour cadrer ton activité, ta voix, tes offres et tes clients. On en fait un document de référence que notre programme relit à chaque génération.</p>
+            <span class="step-time">⏱ Une fois, au départ</span>
+          </div>
+        </div>
+
+        <div class="step scroll-reveal">
+          <div class="step-aside">
+            <div class="step-num">2</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-body">
+            <h3>Tu déposes tes photos dans un dossier Drive</h3>
+            <p>Ta banque d'images réelles. On connecte tes comptes LinkedIn, Facebook et Instagram en sécurité. Et c'est tout côté technique.</p>
+            <span class="step-time">⏱ 30 minutes</span>
+          </div>
+        </div>
+
+        <div class="step scroll-reveal">
+          <div class="step-aside">
+            <div class="step-num">3</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-body">
+            <h3>Chaque lundi, ta semaine est générée</h3>
+            <p>Posté ! pioche dans tes photos (sans jamais réutiliser deux fois la même au hasard) et rédige les légendes à ta voix, réseau par réseau.</p>
+            <span class="step-time">⏱ Automatique</span>
+          </div>
+        </div>
+
+        <div class="step scroll-reveal">
+          <div class="step-aside">
+            <div class="step-num">4</div>
+          </div>
+          <div class="step-body">
+            <h3>Tu valides par email, on publie</h3>
+            <p>Un mail par jour : Publier, Suivant ou Annuler. On publie sur tes trois réseaux. Le dimanche, tu reçois ton récap. La machine tourne sans toi.</p>
+            <span class="step-time">⏱ 2 minutes par jour</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" style="background:linear-gradient(90deg, transparent 0%, #E5E7EB 20%, #F59E0B 50%, #E5E7EB 80%, transparent 100%);"></div>
+
+  <!-- ── 5. TESTIMONIALS ───────────────────────────────────────────── -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Ils nous font confiance</span>
+        <h2 class="scroll-reveal">On démarre avec de vrais clients,<br />pas avec des promesses</h2>
+      </div>
+
+      <div class="testi-grid scroll-reveal-stagger">
+        <!-- VRAI CLIENT : faits réels, aucune citation inventée -->
+        <div class="testi-card real scroll-reveal">
+          <span class="testi-tag client">Client réel</span>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">Circuit de karting près de Montpellier, 40 ans d'existence en 2026. Posté ! publie chaque semaine sur leurs réseaux à partir de leurs vraies photos de circuit et de sessions.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">🏁</div>
+            <div>
+              <div class="testi-name">LOC'KARTING</div>
+              <div class="testi-role">Loisirs sportifs · Pérols (34)</div>
+            </div>
+          </div>
+          <div class="testi-metric">
+            <div class="testi-metric-item">
+              <div class="testi-metric-num">4,4/5</div>
+              <div class="testi-metric-lbl">1 374 avis Google</div>
+            </div>
+            <div class="testi-metric-item">
+              <div class="testi-metric-num">40 ans</div>
+              <div class="testi-metric-lbl">d'activité</div>
+            </div>
+            <div class="testi-metric-item">
+              <div class="testi-metric-num">3 réseaux</div>
+              <div class="testi-metric-lbl">automatisés</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLACEHOLDER : à remplacer par un vrai témoignage -->
+        <div class="testi-card placeholder scroll-reveal">
+          <span class="testi-tag todo">Emplacement</span>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">Ton témoignage ici. Un client qui raconte comment il a arrêté de stresser pour ses posts et combien de temps il a récupéré chaque semaine.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">🙂</div>
+            <div>
+              <div class="testi-name">À venir</div>
+              <div class="testi-role">Ton prochain client</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLACEHOLDER : à remplacer par un vrai témoignage -->
+        <div class="testi-card placeholder scroll-reveal">
+          <span class="testi-tag todo">Emplacement</span>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">Ton témoignage ici. Idéalement un artisan ou une profession libérale qui souligne que le contenu lui ressemble vraiment, parce qu'il vient de ses photos.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">🙂</div>
+            <div>
+              <div class="testi-name">À venir</div>
+              <div class="testi-role">Ton prochain client</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── 7. PRICING ────────────────────────────────────────────────── -->
+  <section id="pricing">
+    <div class="container text-center">
+      <span class="section-label">Tarif</span>
+      <h2 class="scroll-reveal">Moins cher qu'un salarié,<br />plus fidèle qu'une agence</h2>
+      <p class="scroll-reveal" style="color:var(--color-text-secondary); margin-top:var(--space-3); font-size:var(--text-body-lg);">On installe, on maintient, tu valides. Sans engagement de durée.</p>
+    </div>
+
+    <div class="container">
+      <div class="pricing-grid scroll-reveal-stagger">
+        <div class="pricing-card scroll-reveal">
+          <div class="plan-name">Pour commencer</div>
+          <div class="plan-price">490 €<span> HT</span></div>
+          <div class="plan-sub">Audit stratégique</div>
+          <p class="plan-desc">Comprendre ce qui bloque ta présence et repartir avec un plan clair.</p>
+          <ul class="plan-features">
+            <li>Analyse de ton activité et de ta présence digitale</li>
+            <li>Identification des points de friction</li>
+            <li>Plan d'action concret et priorisé</li>
+            <li>Première version de ta base de connaissance</li>
+            <li>Déductible si tu enclenches Posté ! derrière</li>
+          </ul>
+          <a href="#cta-final" data-cta class="btn btn-secondary plan-cta">Réserver l'audit</a>
+        </div>
+
+        <div class="pricing-card popular scroll-reveal">
+          <span class="popular-badge">⭐ Le coeur du service</span>
+          <div class="plan-name">Posté ! présence automatisée</div>
+          <div class="plan-price">3 500 €<span> HT</span></div>
+          <div class="plan-sub">+ 150 €/mois de maintenance</div>
+          <p class="plan-desc">Tout le système, installé et maintenu pour toi. Tu n'as plus qu'à valider.</p>
+          <ul class="plan-features">
+            <li>Génération hebdo à partir de tes vraies photos</li>
+            <li>Légendes à ta voix, adaptées à chaque réseau</li>
+            <li>Validation en 1 clic par email, chaque jour</li>
+            <li>Publication LinkedIn + Facebook + Instagram</li>
+            <li>Récap KPI envoyé chaque dimanche</li>
+            <li>Base de connaissance maintenue avec toi</li>
+          </ul>
+          <a href="#cta-final" data-cta class="btn btn-primary plan-cta">Réserver un appel</a>
+        </div>
+
+        <div class="pricing-card scroll-reveal">
+          <div class="plan-name">Plusieurs marques</div>
+          <div class="plan-price">Sur devis</div>
+          <div class="plan-sub">Sur-mesure</div>
+          <p class="plan-desc">Pour les groupes, franchises ou agences qui gèrent plusieurs comptes.</p>
+          <ul class="plan-features">
+            <li>Plusieurs marques ou points de vente</li>
+            <li>Cadence personnalisée par compte</li>
+            <li>Réseaux et intégrations spécifiques</li>
+            <li>Accompagnement dédié</li>
+          </ul>
+          <a href="#cta-final" data-cta class="btn btn-secondary plan-cta">En parler</a>
+        </div>
+      </div>
+
+      <p class="pricing-note scroll-reveal">
+        💡 L'audit (490 € HT) est déductible si tu enclenches la présence automatisée derrière. Et toujours le principe de Posté ! : <strong>pas de génération d'image IA</strong>, on part de tes vraies photos. Ta marque reste la tienne.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 8. INTEGRATIONS MARQUEE ───────────────────────────────────── -->
+  <section id="logos">
+    <p class="logos-label">Publie sur tes réseaux, à partir de tes outils</p>
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span class="logo-item">LinkedIn</span>
+        <span class="logo-item">Facebook</span>
+        <span class="logo-item">Instagram</span>
+        <span class="logo-item">Google Drive</span>
+        <span class="logo-item">Validation par email</span>
+        <span class="logo-item">Récap hebdo</span>
+        <!-- duplicate for seamless loop -->
+        <span class="logo-item">LinkedIn</span>
+        <span class="logo-item">Facebook</span>
+        <span class="logo-item">Instagram</span>
+        <span class="logo-item">Google Drive</span>
+        <span class="logo-item">Validation par email</span>
+        <span class="logo-item">Récap hebdo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 6. CTA FINAL ──────────────────────────────────────────────── -->
+  <section id="cta-final" class="grain-texture">
+    <div class="glow-orb-1" style="left:50%; transform:translateX(-50%); top:-100px; opacity:.2;"></div>
+    <div class="container" style="position:relative; z-index:1;">
+      <h2 class="scroll-reveal text-glow">Arrête de courir après tes réseaux.<br />Réserve un appel.</h2>
+      <p class="scroll-reveal">On regarde ensemble ton activité et tes photos, et on te dit franchement si Posté ! est fait pour toi. Sans blabla, sans pression.</p>
+      <a href="#" data-cta class="btn btn-primary scroll-reveal" style="font-size:1.1rem; padding:1.1rem 2.5rem; box-shadow: var(--shadow-glow-intense);">
+        Réserver un appel →
+      </a>
+      <div class="cta-guarantees scroll-reveal">
+        <span class="guarantee"><span class="check">✓</span> Tes vraies photos, jamais d'IA</span>
+        <span class="guarantee"><span class="check">✓</span> Tu valides chaque post</span>
+        <span class="guarantee"><span class="check">✓</span> Sans engagement de durée</span>
+        <span class="guarantee"><span class="check">✓</span> Audit déductible si tu continues</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">Easy<span>SN</span></a>
+          <p>Tes réseaux sociaux publiés pour toi, à partir de tes vraies photos. Un service de l'agence ULTRAFACILE AI.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Posté !</h4>
+          <ul>
+            <li><a href="#solutions">Ce que ça fait</a></li>
+            <li><a href="#process">Comment ça marche</a></li>
+            <li><a href="#pricing">Tarif</a></li>
+            <li><a href="#cta-final" data-cta>Réserver un appel</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Légal</h4>
+          <ul>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">CGV</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 ULTRAFACILE AI. Tous droits réservés.</span>
+        <span>Fait avec ❤️ pour les TPE et PME françaises</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ───────────────────────────────────────────────────── -->
+  <script>
+    // ─────────────────────────────────────────────────────────────────
+    // CTA : lien de prise de rendez-vous TidyCal.
+    // Une seule ligne à changer si ton slug évolue.
+    // Tous les boutons marqués data-cta pointeront automatiquement dessus.
+    // ─────────────────────────────────────────────────────────────────
+    const BOOKING_URL = "https://tidycal.com/ultrafacile/15-min-pour-voir-si-poste-est-fait-pour-toi";
+
+    document.querySelectorAll('a[data-cta]').forEach(a => {
+      a.setAttribute('href', BOOKING_URL);
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+    });
+
+    // Nav scroll effect
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Burger menu (mobile)
+    const burger = document.getElementById('burger');
+    const navMenu = document.querySelector('.nav-menu');
+    burger.addEventListener('click', () => {
+      const open = navMenu.style.display === 'flex';
+      navMenu.style.display = open ? 'none' : 'flex';
+      navMenu.style.flexDirection = 'column';
+      navMenu.style.position = 'absolute';
+      navMenu.style.top = '64px';
+      navMenu.style.left = '0';
+      navMenu.style.right = '0';
+      navMenu.style.background = 'rgba(255,255,255,.98)';
+      navMenu.style.padding = '16px 24px';
+      navMenu.style.borderBottom = '1px solid #E5E7EB';
+    });
+
+    // Scroll reveal with IntersectionObserver
+    const reveals = document.querySelectorAll('.scroll-reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
