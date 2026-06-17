@@ -154,7 +154,7 @@
     ───────────────────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; } /* Lenis gère le smooth scroll, pas de double effet */
 
     body {
       font-family: var(--font-body);
@@ -964,6 +964,8 @@
     @keyframes orb-drift { to { transform: translate(40px, 30px); } }
     .btn-primary:hover { transform: translateY(-2px) scale(1.02); }
     .btn { will-change: transform; }
+    /* Force le centrage du paragraphe CTA final (override robuste) */
+    #cta-final p { margin-left: auto !important; margin-right: auto !important; text-align: center !important; max-width: 560px; }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .001s !important; animation-iteration-count: 1 !important; transition-duration: .001s !important; }
       .scroll-reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
