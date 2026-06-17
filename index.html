@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Posté ! tes réseaux publiés pour toi à partir de tes vraies photos | ULTRAFACILE AI</title>
-  <meta name="description" content="Posté ! génère chaque semaine tes publications LinkedIn, Facebook et Instagram à partir de tes vraies photos. Tu valides en 1 clic par email, on publie. Pas d'image IA. Par l'agence ULTRAFACILE AI." />
-  <meta name="keywords" content="automatisation réseaux sociaux, publication LinkedIn Facebook Instagram, contenu à partir de vraies photos, validation 1 clic, agence IA TPE PME, ULTRAFACILE AI, Posté !" />
+  <title>Posté ! tes réseaux publiés pour toi à partir de tes vraies photos | ULTRAFACILE</title>
+  <meta name="description" content="Posté ! génère chaque semaine tes publications LinkedIn, Facebook et Instagram à partir de tes vraies photos. Tu valides en 1 clic par email, on publie. Pas d'image IA. Par l'agence ULTRAFACILE." />
+  <meta name="keywords" content="automatisation réseaux sociaux, publication LinkedIn Facebook Instagram, contenu à partir de vraies photos, validation 1 clic, agence IA TPE PME, ULTRAFACILE, Posté !" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -958,6 +958,17 @@
     @media (min-width: 1024px) {
       .hero-title { font-size: var(--text-display); }
     }
+    /* ── Cohérence animations avec ultrafacile.fr ── */
+    #hero .glow-orb-1 { animation: orb-drift 16s ease-in-out infinite alternate; }
+    #hero .glow-orb-2 { animation: orb-drift 20s ease-in-out infinite alternate-reverse; }
+    @keyframes orb-drift { to { transform: translate(40px, 30px); } }
+    .btn-primary:hover { transform: translateY(-2px) scale(1.02); }
+    .btn { will-change: transform; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001s !important; animation-iteration-count: 1 !important; transition-duration: .001s !important; }
+      .scroll-reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
+      #hero .glow-orb-1, #hero .glow-orb-2 { animation: none !important; }
+    }
   </style>
 </head>
 
@@ -966,7 +977,7 @@
   <!-- ── NAV ──────────────────────────────────────────────────────── -->
   <nav id="main-nav">
     <div class="nav-inner">
-      <a href="#" class="logo">Easy<span>SN</span><small>par ULTRAFACILE AI</small></a>
+      <a href="#" class="logo">Posté<span> !</span><small>par ULTRAFACILE</small></a>
       <ul class="nav-menu">
         <li><a href="#solutions">Ce que ça fait</a></li>
         <li><a href="#process">Comment ça marche</a></li>
@@ -1029,9 +1040,9 @@
         </div>
 
         <div class="gm-from">
-          <div class="gm-avatar">SN</div>
+          <div class="gm-avatar">P!</div>
           <div style="flex:1">
-            <div class="gm-from-name">Posté ! <span class="gm-from-mail">&lt;hello@ultrafacile.ai&gt;</span></div>
+            <div class="gm-from-name">Posté ! <span class="gm-from-mail">&lt;bonjour@ultrafacile.fr&gt;</span></div>
             <div class="gm-from-meta">à moi · 9:00</div>
           </div>
           <span class="gm-star">☆</span>
@@ -1247,30 +1258,16 @@
           </div>
         </div>
 
-        <!-- PLACEHOLDER : à remplacer par un vrai témoignage -->
-        <div class="testi-card placeholder scroll-reveal">
-          <span class="testi-tag todo">Emplacement</span>
+        <!-- VRAI CLIENT : COLOR'HE -->
+        <div class="testi-card real scroll-reveal">
+          <span class="testi-tag client">Client réel</span>
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">Ton témoignage ici. Un client qui raconte comment il a arrêté de stresser pour ses posts et combien de temps il a récupéré chaque semaine.</p>
+          <p class="testi-quote">Peintre décorative à Montpellier : stuc & tadelakt, béton ciré, sols. Posté ! met en valeur ses réalisations à partir de ses vraies photos de chantier, sur ses réseaux.</p>
           <div class="testi-author">
-            <div class="testi-avatar">🙂</div>
+            <div class="testi-avatar">🖌️</div>
             <div>
-              <div class="testi-name">À venir</div>
-              <div class="testi-role">Ton prochain client</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PLACEHOLDER : à remplacer par un vrai témoignage -->
-        <div class="testi-card placeholder scroll-reveal">
-          <span class="testi-tag todo">Emplacement</span>
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">Ton témoignage ici. Idéalement un artisan ou une profession libérale qui souligne que le contenu lui ressemble vraiment, parce qu'il vient de ses photos.</p>
-          <div class="testi-author">
-            <div class="testi-avatar">🙂</div>
-            <div>
-              <div class="testi-name">À venir</div>
-              <div class="testi-role">Ton prochain client</div>
+              <div class="testi-name">COLOR'HE</div>
+              <div class="testi-role">Peinture décorative · Montpellier (34)</div>
             </div>
           </div>
         </div>
@@ -1388,8 +1385,8 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo">Easy<span>SN</span></a>
-          <p>Tes réseaux sociaux publiés pour toi, à partir de tes vraies photos. Un service de l'agence ULTRAFACILE AI.</p>
+          <a href="#" class="logo">Posté<span> !</span></a>
+          <p>Tes réseaux sociaux publiés pour toi, à partir de tes vraies photos. Un service de l'agence ULTRAFACILE.</p>
         </div>
         <div class="footer-col">
           <h4>Posté !</h4>
@@ -1406,12 +1403,12 @@
             <li><a href="#">Mentions légales</a></li>
             <li><a href="#">CGV</a></li>
             <li><a href="#">Politique de confidentialité</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="https://wa.me/33646561787?text=Salut%20Sabine,%20je%20t'écris%20depuis%20poste.ultrafacile.fr.%20Mon%20activité%20:%20...%20et%20je%20voudrais%20en%20savoir%20plus%20sur%20Posté%20!%20pour%20gérer%20mes%20réseaux%20sociaux." target="_blank" rel="noopener">Contact WhatsApp</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 ULTRAFACILE AI. Tous droits réservés.</span>
+        <span>© 2026 ULTRAFACILE. Tous droits réservés.</span>
         <span>Fait avec ❤️ pour les TPE et PME françaises</span>
       </div>
     </div>
@@ -1466,6 +1463,32 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
     reveals.forEach(el => observer.observe(el));
+  </script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>
+    // Cohérence animations avec ultrafacile.fr : smooth scroll + boutons magnétiques + parallax orbs
+    const reduceM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceM) {
+      if (window.Lenis) {
+        const lenis = new Lenis({ duration: 1.1, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+        (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })();
+        document.querySelectorAll('a[href^="#"]:not([data-cta])').forEach(a => a.addEventListener('click', e => {
+          const id = a.getAttribute('href'); if (id.length < 2) return;
+          const t = document.querySelector(id); if (!t) return; e.preventDefault(); lenis.scrollTo(t, { offset: -70 });
+        }));
+      }
+      document.querySelectorAll('.btn-primary').forEach(b => {
+        b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.25}px, ${(e.clientY-r.top-r.height/2)*.35}px) scale(1.02)`; });
+        b.addEventListener('mouseleave', () => { b.style.transform = ''; });
+      });
+      const o1 = document.querySelector('#hero .glow-orb-1'), o2 = document.querySelector('#hero .glow-orb-2');
+      let mx=0,my=0,cx=0,cy=0;
+      addEventListener('mousemove', e => { mx = e.clientX/innerWidth-.5; my = e.clientY/innerHeight-.5; });
+      (function loop(){ cx+=(mx-cx)*.05; cy+=(my-cy)*.05;
+        if(o1) o1.style.translate = `${cx*30}px ${cy*24}px`;
+        if(o2) o2.style.translate = `${cx*-36}px ${cy*-28}px`;
+        requestAnimationFrame(loop); })();
+    }
   </script>
 </body>
 </html>
