@@ -15,6 +15,26 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#F59E0B">
 
+  <!-- Meta Pixel. Paste the Pixel ID from Business Manager (Events Manager >
+       Data sources) below AND in thank-you.html. Guarded: stays inert while
+       the placeholder is in place, so deploying without an ID is safe.
+       Events: PageView + ViewContent here; InitiateCheckout on CTA click
+       (funnel signal only); Lead fires on thank-you.html (the ONLY
+       optimization event for campaigns). -->
+  <script>
+    window.META_PIXEL_ID = "REPLACE_WITH_PIXEL_ID";
+    if (!/^REPLACE/.test(window.META_PIXEL_ID)) {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', window.META_PIXEL_ID);
+      fbq('track', 'PageView');
+      fbq('track', 'ViewContent', { content_name: 'lp_poste' });
+    }
+  </script>
+
   <style>
     /* ─────────────────────────────────────────────────────────────────
        DESIGN TOKENS - from design.md
@@ -1426,10 +1446,26 @@
     // ─────────────────────────────────────────────────────────────────
     const BOOKING_URL = "https://tidycal.com/ultrafacile/15-min-pour-voir-si-poste-est-fait-pour-toi";
 
+    // Forward the page's utm_* params to TidyCal: the CRM webhook maps a
+    // utm_source containing ads/facebook/instagram to source="ads", so this
+    // is what keeps the ad attribution end to end.
+    const utms = new URLSearchParams();
+    new URLSearchParams(location.search).forEach((v, k) => {
+      if (k.toLowerCase().startsWith('utm_')) utms.append(k, v);
+    });
+    const bookingHref = utms.toString()
+      ? BOOKING_URL + (BOOKING_URL.includes('?') ? '&' : '?') + utms.toString()
+      : BOOKING_URL;
+
     document.querySelectorAll('a[data-cta]').forEach(a => {
-      a.setAttribute('href', BOOKING_URL);
+      a.setAttribute('href', bookingHref);
       a.setAttribute('target', '_blank');
       a.setAttribute('rel', 'noopener');
+      // Funnel signal only (retargeting "clicked but did not book" +
+      // diagnostics). Campaigns optimize on the Lead event of thank-you.html.
+      a.addEventListener('click', () => {
+        if (window.fbq) fbq('track', 'InitiateCheckout', { content_name: 'cta_tidycal' });
+      });
     });
 
     // Nav scroll effect

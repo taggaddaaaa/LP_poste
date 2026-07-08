@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rendez-vous confirmé | Posté ! par ULTRAFACILE</title>
+  <!-- Conversion page reached only via the TidyCal post-booking redirect:
+       keep it out of search engines so no fake Lead ever fires. -->
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#F59E0B">
+
+  <!-- Meta Pixel: same ID as index.html. Fires the Lead conversion, the ONLY
+       event campaigns optimize on. Guarded while the placeholder is set, and
+       deduplicated per session (a refresh must not double-count). -->
+  <script>
+    window.META_PIXEL_ID = "REPLACE_WITH_PIXEL_ID";
+    if (!/^REPLACE/.test(window.META_PIXEL_ID)) {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', window.META_PIXEL_ID);
+      fbq('track', 'PageView');
+      if (!sessionStorage.getItem('poste_lead_fired')) {
+        fbq('track', 'Lead', { content_name: 'tidycal_booking' });
+        sessionStorage.setItem('poste_lead_fired', '1');
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --color-primary: #F59E0B;
+      --color-primary-hover: #D97706;
+      --ink: #1C1917;
+      --ink-soft: #57534E;
+      --cream: #FDF8F0;
+      --card: #FFFFFF;
+      --green: #16A34A;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Outfit", sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 24px;
+      box-shadow: 0 18px 60px rgba(28, 25, 23, 0.08);
+      max-width: 560px; width: 100%;
+      padding: 48px 40px;
+      text-align: center;
+    }
+    .check {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--green); color: #fff;
+      font-size: 38px; line-height: 72px;
+      margin: 0 auto 24px auto;
+    }
+    h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 12px; }
+    .lead { color: var(--ink-soft); font-size: 17px; line-height: 1.6; margin-bottom: 28px; }
+    .steps { text-align: left; margin: 0 auto 32px auto; max-width: 420px; display: flex; flex-direction: column; gap: 14px; }
+    .step { display: flex; gap: 14px; align-items: flex-start; font-size: 15.5px; line-height: 1.5; color: var(--ink-soft); }
+    .step b { color: var(--ink); }
+    .step .n {
+      flex: none; width: 26px; height: 26px; border-radius: 50%;
+      background: #FEF3C7; color: var(--color-primary-hover);
+      font-weight: 700; font-size: 14px; line-height: 26px; text-align: center;
+    }
+    .btn {
+      display: inline-block; background: var(--color-primary); color: #fff;
+      font-weight: 700; font-size: 16px; text-decoration: none;
+      border-radius: 12px; padding: 14px 28px;
+      transition: background 0.15s ease;
+    }
+    .btn:hover { background: var(--color-primary-hover); }
+    .brand { margin-top: 28px; color: var(--ink-soft); font-size: 13px; }
+    .brand .bang { color: var(--color-primary); font-weight: 800; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="check">✓</div>
+    <h1 id="title">C'est réservé !</h1>
+    <p class="lead">
+      Ton créneau de 15 minutes est confirmé. Tu vas recevoir un email avec le
+      lien de la visio et une invitation agenda.
+    </p>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><span><b>Vérifie ta boîte mail</b> (et les spams, on ne sait jamais) : la confirmation part tout de suite.</span></div>
+      <div class="step"><span class="n">2</span><span><b>Prépare 2 ou 3 photos</b> de ton activité si tu en as sous la main : on te montre ce que Posté ! en ferait.</span></div>
+      <div class="step"><span class="n">3</span><span><b>15 minutes, zéro engagement</b> : à la fin, tu sais si Posté ! est fait pour toi.</span></div>
+    </div>
+    <a class="btn" href="https://poste.ultrafacile.fr">Retour au site</a>
+    <div class="brand">Posté<span class="bang"> !</span> par ULTRAFACILE</div>
+  </main>
+
+  <script>
+    // TidyCal can append contact template variables to the redirect URL:
+    // greet by first name when present, ignore unresolved {{...}} templates.
+    const name = new URLSearchParams(location.search).get('name');
+    if (name && !name.includes('{{')) {
+      const first = name.trim().split(/\s+/)[0];
+      if (first) document.getElementById('title').textContent = `C'est réservé, ${first} !`;
+    }
+  </script>
+</body>
+</html>
